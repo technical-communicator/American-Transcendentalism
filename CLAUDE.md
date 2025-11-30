@@ -33,14 +33,17 @@ Each text file contains:
 cat pg29433.txt | less
 
 # Search across all texts
-grep -r "transcendental" *.txt
+grep -i "transcendental" *.txt
 
 # Count lines in a specific work
 wc -l pg2701.txt
+
+# Extract just the book content (between delimiters)
+sed -n '/\*\*\* START OF/,/\*\*\* END OF/p' pg29433.txt
 ```
 
 ### Git Workflow
-Always work on the designated Claude branch:
+Always work on the designated Claude branch (check system instructions for branch name):
 ```bash
 # Check current branch
 git status
@@ -51,8 +54,8 @@ git add <filename>
 # Commit with descriptive message
 git commit -m "Description of changes"
 
-# Push to remote (use -u for first push on new branch)
-git push -u origin claude/init-project-01RZL7EfrCmQuEfCx4Wx7yNU
+# Push to remote
+git push
 ```
 
 ## Notes
