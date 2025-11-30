@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Transcendentalism - Distant Reading Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>American Transcendentalism</h1>
+            <p class="subtitle">A Distant Reading Analysis of Classic Literary Works</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <button class="nav-btn active" data-view="overview">Overview</button>
+            <button class="nav-btn" data-view="texts">Individual Texts</button>
+            <button class="nav-btn" data-view="comparison">Comparison</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Overview Section -->
+        <section id="overview-view" class="view-section active">
+            <h2>Collection Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-card" id="overview-stats">
+                    <h3>Collection Statistics</h3>
+                    <div id="collection-stats"></div>
+                </div>
+                <div class="overview-card">
+                    <h3>Texts in Collection</h3>
+                    <div id="text-list"></div>
+                </div>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-container">
+                    <h3>Word Count Comparison</h3>
+                    <canvas id="wordCountChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Sentiment Analysis</h3>
+                    <canvas id="sentimentChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Individual Texts Section -->
+        <section id="texts-view" class="view-section">
+            <h2>Individual Text Analysis</h2>
+
+            <div class="text-selector">
+                <label for="text-select">Select a text:</label>
+                <select id="text-select">
+                    <option value="">Choose a text...</option>
+                </select>
+            </div>
+
+            <div id="text-details" class="text-details" style="display: none;">
+                <div class="text-header">
+                    <h3 id="text-title"></h3>
+                    <p id="text-author"></p>
+                </div>
+
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h4>Text Statistics</h4>
+                        <div id="text-stats"></div>
+                    </div>
+                    <div class="analysis-card">
+                        <h4>Sentiment Analysis</h4>
+                        <div id="text-sentiment"></div>
+                    </div>
+                </div>
+
+                <div class="wordcloud-container">
+                    <h4>Word Cloud (Top 100 Words)</h4>
+                    <canvas id="wordcloud" width="800" height="400"></canvas>
+                </div>
+
+                <div class="top-words-container">
+                    <h4>Top 20 Most Frequent Words</h4>
+                    <div id="top-words-list"></div>
+                </div>
+
+                <div class="distinctive-words-container">
+                    <h4>Distinctive Words</h4>
+                    <p class="help-text">Words that appear frequently in this text but rarely in others</p>
+                    <div id="distinctive-words-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section id="comparison-view" class="view-section">
+            <h2>Comparative Analysis</h2>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>Lexical Diversity</h3>
+                    <canvas id="diversityChart"></canvas>
+                    <p class="help-text">Ratio of unique words to total words (higher = more varied vocabulary)</p>
+                </div>
+
+                <div class="comparison-card">
+                    <h3>Vocabulary Overlap</h3>
+                    <div id="vocabulary-overlap"></div>
+                    <p class="help-text">Percentage of vocabulary shared between texts</p>
+                </div>
+            </div>
+
+            <div class="comparison-table-container">
+                <h3>Comparative Statistics</h3>
+                <table id="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Text</th>
+                            <th>Total Words</th>
+                            <th>Unique Words</th>
+                            <th>Lexical Diversity</th>
+                            <th>Avg Sentence Length</th>
+                            <th>Sentiment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparison-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Analysis of texts from <a href="https://www.gutenberg.org/" target="_blank">Project Gutenberg</a></p>
+            <p>All texts are in the public domain in the United States</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
